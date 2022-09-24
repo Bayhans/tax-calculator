@@ -24,38 +24,44 @@ namespace TheTaxCalculator
         {
             InitializeComponent();
         }
+
         private void CalculateButton_Click(object sender, RoutedEventArgs e)
         {
-            decimal total = 0;
+            double totalValue = 0;
+            double totalAddedTax = 0;
 
-            if (ValueInput != null)
+            try
             {
-                try
-                {
-                    decimal itemValueInput = Decimal.Parse(ValueInput.Text);
-                    if (NormalRate.IsSelected)
-                    {
-                        total += (itemValueInput * 25 * 100).ToString("0.##");
-                        TotalValue.Text = String.Format("{0:C}", total);
-                        ValueAddedTax.Text = String.Format("{0:C}", total);
-                    }
-                    if (FoodStuffRate.IsSelected)
-                    {
-                        (itemValue * 15 * 100).ToString("0.##");
-                        TotalValue.Text = String.Format("{0:C}", total);
+                int itemValueInput = Convert.ToInt32(ValueInput.Text);
 
-                    }
-                    if (OtherRate.IsSelected)
-                    {
-                        (itemValue * 12 * 100).ToString("0.##");
-                        TotalValue.Text = String.Format("{0:C}", total);
-
-                    }
-                }
-                catch (Exception)
+                if (NormalRate.IsSelected)
                 {
-                    MessageBox.Show("Please enter a valid amount in item price and tax rate");
+                    totalAddedTax = (itemValueInput * 25 / 100);
+                    totalValue = (itemValueInput + totalAddedTax);
+
+                    TotalValue.Text = Math.Round(totalValue, 2).ToString() ;
+                    TotalAddedTax.Text = totalAddedTax + "   " + "25 %";
                 }
+                if (FoodStuffRate.IsSelected)
+                {
+                    totalAddedTax += (itemValueInput * 15 / 100);
+                    totalValue += (itemValueInput + totalAddedTax);
+
+                    TotalValue.Text = Math.Round(totalValue, 2).ToString() ;
+                    TotalAddedTax.Text = totalAddedTax + "   " + "15 %";
+                }
+                if (OtherRate.IsSelected)
+                {
+                    totalAddedTax += (itemValueInput * 12 / 100);
+                    totalValue += (itemValueInput + totalValue);
+
+                    TotalValue.Text = Math.Round(totalValue, 2).ToString() ;
+                    TotalAddedTax.Text = totalAddedTax + "   " + "12 %";
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Please enter a valid amount in item price and tax rate");
             }
         }
     }
