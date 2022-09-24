@@ -1,0 +1,81 @@
+﻿<Window x:Class="TheTaxCalculator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TheTaxCalculator"
+        xmlns:system="clr-namespace:System;assembly=netstandard"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="400" Width="500">
+
+    <Grid Margin="0,10,62,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Height="100"
+                        Grid.Column="0"
+                        Grid.Row="0">
+            <TextBlock  HorizontalAlignment="Center" 
+                        VerticalAlignment="Center"
+                        Text="Value of goods"/>
+            <TextBlock  HorizontalAlignment="Center" 
+                        VerticalAlignment="Center"
+                        Text="Type of goods"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical"
+                        Height="100"
+                        Grid.Column="1"
+                        Grid.Row="0">
+
+            <TextBox x:Name="ValueInput" Text ="&lt;Value&gt;"/>
+            
+            <ComboBox>
+                <ComboBoxItem x:Name="NormalRate"  
+                              IsSelected="True"
+                              Content="_Normal rate   25 %"/>
+                <ComboBoxItem x:Name="FoodStuffRate"
+                              Content="_Foodstuffs   15 %"/>
+                <ComboBoxItem x:Name="OtherRate" 
+                              Content="_Passenger transport, cinema tickits, letting of rooms*  12 % &#x0a;public broadcasting and entry to cinemas,&#x0a;sporting events, &#x0a;amusement parks and activity centres.&#x0a;"/>
+            </ComboBox>
+        </StackPanel>
+
+        <StackPanel  Height="50"
+                         Grid.Column="0"
+                         Grid.Row="1">
+            <TextBlock  HorizontalAlignment="Center" 
+                            VerticalAlignment="Center"
+                            Text="Total value"/>
+            <TextBlock  HorizontalAlignment="Center" 
+                            VerticalAlignment="Center"
+                            Text="Value added tax"/>
+        </StackPanel>
+
+        <StackPanel Height="50"
+                    Grid.Column="1"
+                    Grid.Row="1">
+
+            <TextBlock x:Name="TotalValue"/>
+            <TextBlock x:Name="ValueAddedTax"/>
+        </StackPanel>
+
+        <StackPanel
+                    Grid.Row="0"
+                    Grid.Column="2" Margin="0,10,0,124" Grid.RowSpan="2">
+            <Button Margin="50"
+                    Content="Calculate"
+                    x:Name="CalculateButton"
+                    Background="White">
+            </Button>
+        </StackPanel>
+
+    </Grid>
+</Window>
