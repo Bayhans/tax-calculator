@@ -1,2 +1,2 @@
-#Certainly! The Tax Calculator is a C# tool that contains software for calculating taxes based on income and other tax parameters.
-This software can be used to calculate taxes based on income and other tax parameters. The repository provides various features to assist users in accurately calculating taxes. Users can customize tax parameters according to their needs and obtain tax calculation results quickly. This small tool project can be easily upgraded later on to enhance its functionality and features.
+## Certainly! a C# tool that can beused for calculating taxes based on income and other tax parameters.
+A small tool that can be easily upgraded later to enhance its functionality and features, or to use in different wayes if needed.
